@@ -18,8 +18,12 @@ const DataFormEmpty: DataFormCreateUser = {
     associationId: ''
 }
 
-export default function FormCreateUser(id?: string) {
+type FormCreateUserProps = {
+    id?: string
+}
 
+export default function FormCreateUser(prop: FormCreateUserProps) {
+    const { id } = prop
     const [data, setData] = useState<DataFormCreateUser>(DataFormEmpty)
     const [labelAssociation, setLabelAssociation] = useState<string>('')
 

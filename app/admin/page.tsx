@@ -8,7 +8,7 @@ import { Button, Card, Grid, Typography } from "@mui/material";
 export default function AdminHome() {
     return (
         <>
-            <Card sx={{backgroundColor:'#ffa'}}>
+            <Card sx={{ backgroundColor: '#ffa' }}>
                 <Typography>
                     Home admin
                 </Typography>
@@ -19,8 +19,9 @@ export default function AdminHome() {
                         </Button>
                     </Grid>
                     <Grid item>
-                    <FormCreateUser 
-                 />
+                        <FormCreateUser
+                            id={undefined}
+                        />
 
                     </Grid>
 
