@@ -1,11 +1,18 @@
 'use client'
 import FormCreateUser from "@/components/ui/admin/FormCreateUser";
+import CollapsibleTable from "@/components/ui/admin/TableTrips";
 //import { getServerSession } from "next-auth";
 //import { authOptions } from "./utils/auth";
 
 import { Button, Card, Grid, Typography } from "@mui/material";
+import { useState } from "react";
 
 export default function AdminHome() {
+    const [openCreateUser, setOpenCreateUser] = useState<boolean>(false)
+
+    const handleSetOpenCrearUsuario = () => {
+        setOpenCreateUser(!openCreateUser)
+    }
     return (
         <>
             <Card sx={{ backgroundColor: '#ffa' }}>
@@ -14,17 +21,24 @@ export default function AdminHome() {
                 </Typography>
                 <Grid container justifyContent={"center"} alignContent={"center"} direction={"column"} >
                     <Grid item >
-                        <Button variant="outlined">
+                        <Button variant="outlined" onClick={handleSetOpenCrearUsuario}>
                             Crear usuario
                         </Button>
                     </Grid>
+
+                    {openCreateUser && (
+                        <Grid item>
+                            <FormCreateUser
+                                id={undefined}
+                            />
+                        </Grid>
+                    )
+                    }
                     <Grid item>
-                        <FormCreateUser
-                            id={undefined}
+                        <CollapsibleTable
+                         
                         />
-
                     </Grid>
-
                 </Grid>
             </Card>
         </>
