@@ -12,6 +12,8 @@ import Typography from '@mui/material/Typography';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import { ListTrips } from '@/app/components/ui/bus/ListTrips';
+import { ProGallery } from 'pro-gallery';
+import { Galeria } from './Galeria';
 
 const tiers = [
   {
@@ -55,6 +57,59 @@ const tiers = [
   },
 ];
 
+const container = {
+  width: 1000,
+  height: 500,
+}
+
+const items = [
+  { // Image Item:
+    itemId: 'sample-id',
+    mediaUrl: 'sample-image-url',
+    metaData: {
+      type: 'image',
+      height: 200,
+      width: 100,
+      title: 'sample-title',
+      description: 'sample-description',
+      focalPoint: [0, 0],
+      link: {
+        url: 'http://example.com',
+        target: '_blank'
+      },
+    }
+  },
+  { // Video Item:
+    itemId: 'sample-id',
+    mediaUrl: 'sample-video-url',
+    metaData: {
+      type: 'video',
+      height: 200,
+      width: 100,
+  		poster: 'sample-image-url',
+      title: 'sample-title',
+      description: 'sample-description',
+      focalPoint: [0, 0],
+      link: {
+        url: 'http://example.com',
+        target: '_blank'
+      },
+    }
+  },
+  { // HTML Item:
+    itemId: 'sample-id',
+    html: "<div style='width: 300px; height: 200px; background:pink;'>I am a text block</div>",
+    metadata: {
+      type: "text",
+      height: 200,
+      width: 300,
+      title: 'sample-title',
+      description: 'sample-description',
+      backgroundColor: 'pink'
+    },
+
+  },]
+
 export default function Pricing() {
   return (
     <Container
@@ -76,7 +131,7 @@ export default function Pricing() {
         }}
       >
         <Typography component="h2" variant="h4" color="text.primary">
-          Salidas 
+          Galeria
         </Typography>
         <Typography variant="body1" color="text.secondary">
           Quickly build an effective pricing table for your potential customers with
@@ -84,6 +139,8 @@ export default function Pricing() {
           It&apos;s built with default Material UI components with little
           customization.
         </Typography>
+        <Galeria
+        />
       </Box>
       <Grid container spacing={3} alignItems="center" justifyContent="center">
       </Grid>

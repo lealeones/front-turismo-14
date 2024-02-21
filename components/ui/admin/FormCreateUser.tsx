@@ -1,6 +1,6 @@
 
 
-import { Autocomplete, Box, Button, Card, Grid, Paper, TextField, Typography } from "@mui/material";
+import { Autocomplete, Box, Button, Container, Grid, Paper, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import { z } from "zod";
 
@@ -59,60 +59,69 @@ export default function FormCreateUser(prop: FormCreateUserProps) {
 
     }
     return (
-        <Paper elevation={4} sx={{ p: 2 }}>
-            <Box >
+        <Paper
+            id="form-createUser"
+            sx={{
+                m: 4,
+                p: 10,
+                flexDirection: 'column',
+                width: '100%'
+            }}
+        >
+            <Grid container spacing={2} direction={"column"}>
                 <Typography variant="h4">
                     Formulario para usuario
                 </Typography>
-                <Grid container spacing={2} direction={"column"} >
-                    <Grid container item spacing={2} alignItems={"center"} direction={"column"} >
-                        <Grid item>
-                            <TextField
-                                required
-                                name="name"
-                                value={data.name}
-                                id="createUser-name"
-                                label="Nombre"
-                            />
-                        </Grid>
-                        <Grid item>
-                            <TextField
-                                required
-                                name="dni"
-                                value={data.dni}
-                                id="createUser-dni"
-                                label="DNI"
-                            />
-                        </Grid>
-                        <Grid item>
-                            <TextField
-                                required
-                                name="correo"
-                                value={data.email}
-                                id="createUser-correo"
-                                label="Correo electronico"
-                            />
-                        </Grid>
-                        <Grid item>
-                            <Autocomplete
-                                aria-required
-                                disablePortal
-                                id="createUser-association"
-                                value={{ label: labelAssociation, year: +data.associationId }}
-                                options={top100Films}
-                                fullWidth
-                                sx={{ width: 220 }}
-                                renderInput={(params) => <TextField {...params} label="Asociacion" />}
-                            />
-                        </Grid>
-                    </Grid>
-                    <Grid item alignItems={"center"}>
-                        <Button fullWidth variant="outlined" onClick={handleSubmit} disabled={disableSubmit} >
-                            Guardar
-                        </Button>
-                    </Grid>
+                <Grid item>
+                    <TextField
+                        fullWidth
+                        required
+                        name="name"
+                        value={data.name}
+                        id="createUser-name"
+                        label="Nombre"
+                    />
                 </Grid>
-            </Box>
+                <Grid item>
+                    <TextField
+                        fullWidth
+                        required
+                        name="dni"
+                        value={data.dni}
+                        id="createUser-dni"
+                        label="DNI"
+                    />
+                </Grid>
+
+                <Grid item>
+                    <TextField
+                        fullWidth
+                        required
+                        name="correo"
+                        value={data.email}
+                        id="createUser-correo"
+                        label="Correo electronico"
+                    />
+                </Grid>
+                <Grid item >
+                    <Autocomplete
+                        aria-required
+                        disablePortal
+                        id="createUser-association"
+                        value={{ label: labelAssociation, year: +data.associationId }}
+                        options={top100Films}
+                        fullWidth
+
+
+                        renderInput={(params) => <TextField {...params} label="Asociacion" />}
+                    />
+                </Grid>
+                <Grid item alignItems={"center"}>
+                    <Button fullWidth variant="outlined" onClick={handleSubmit} disabled={disableSubmit} >
+                        Guardar
+                    </Button>
+                </Grid>
+            </Grid>
         </Paper>
     );
 }

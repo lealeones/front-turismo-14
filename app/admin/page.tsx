@@ -28,15 +28,13 @@ export default function AdminHome() {
 
                     {openCreateUser && (
                         <Grid item>
-                            <FormCreateUser
-                                id={undefined}
-                            />
+                            <FormCreateUser />
                         </Grid>
                     )
                     }
                     <Grid item>
                         <CollapsibleTable
-                         
+
                         />
                     </Grid>
                 </Grid>

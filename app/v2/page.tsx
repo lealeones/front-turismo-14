@@ -70,6 +70,7 @@ function ToggleCustomTheme({
 export default function LandingPage() {
   const [mode, setMode] = React.useState<PaletteMode>('dark');
   const [showCustomTheme, setShowCustomTheme] = React.useState(true);
+  
   const LPtheme = createTheme(getLPTheme(mode));
 
   const toggleColorMode = () => {
@@ -93,10 +94,9 @@ export default function LandingPage() {
         <Testimonials />
         <Divider />
         <Highlights />
+        {/* <Divider />
+        <Features /> */}
         <Divider />
-        <Features />
-        <Divider />
-
         <Footer />
       </Box>
       <ToggleCustomTheme
@@ -106,3 +106,4 @@ export default function LandingPage() {
     </ThemeProvider>
   );
 }
+

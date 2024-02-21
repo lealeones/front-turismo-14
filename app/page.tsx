@@ -4,6 +4,7 @@
 
 import { SessionProvider } from "next-auth/react";
 import { HomeBus } from "./components/ui/bus/HomeBus";
+import { ToastContainer } from "react-toastify";
 
 export default function App() {
   // const session = await getServerSession(authOptions);
@@ -11,8 +12,12 @@ export default function App() {
 
 
   return (
-    <SessionProvider  >
-      <HomeBus />
-    </SessionProvider>
+    <>
+
+      <SessionProvider  >
+        <HomeBus />
+      </SessionProvider>
+
+    </>
   );
 }

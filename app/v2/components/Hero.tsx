@@ -29,23 +29,23 @@ export default function Hero() {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          pt: { xs: 14, sm: 20 },
+          pt: { xs: 14, sm: 15 },
           pb: { xs: 8, sm: 12 },
         }}
       >
-        <Stack spacing={2} useFlexGap sx={{ width: { xs: '100%', sm: '70%' } }}>
+        <Stack spacing={1} useFlexGap sx={{ width: { xs: '100%', sm: '70%' } }}>
           <Typography
             component="h1"
             variant="h1"
-            sx={{
+            sx={(theme) => ({
+              color: theme.palette.mode === 'light' ? 'primary.main' : 'primary.light',
               display: 'flex',
               flexDirection: { xs: 'column', md: 'row' },
               alignSelf: 'center',
               textAlign: 'center',
-            }}
+            })}
           >
-            Recorridos
-
+            Paraná Bus Turistico
           </Typography>
           <Typography variant="body1" textAlign="center" color="text.secondary">
             ¡Explora Paraná con nuestro bus turístico!<br />
@@ -66,7 +66,6 @@ export default function Hero() {
               hiddenLabel
               size="small"
               variant="outlined"
-              aria-label="Enter your email address"
               placeholder="Your email address"
               inputProps={{
                 autocomplete: 'off',

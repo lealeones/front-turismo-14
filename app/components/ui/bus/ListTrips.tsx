@@ -16,7 +16,27 @@ export const ListTrips = () => {
       places: 20,
       idAsociacion: 1,
       startTime: new Date(),
-      title: 'viajee',
+      title: 'Sábado 15HS',
+    },
+    {
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      id: 1,
+      dscr: "Viaje a la luna",
+      places: 20,
+      idAsociacion: 1,
+      startTime: new Date(),
+      title: 'VIERNES 15 HS',
+    },
+    {
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      id: 1,
+      dscr: "Viaje a la luna",
+      places: 20,
+      idAsociacion: 1,
+      startTime: new Date(),
+      title: 'VIERNES 14 HS',
     }
   ]
 
@@ -30,7 +50,7 @@ export const ListTrips = () => {
   // if (loading) return <p>Loading...</p>;
 
   return (
-    <Container sx={{ py: 8 }}>
+    <Container sx={{ py: 4 }}>
       <Grid container justifyContent={"center"} direction={"row"} spacing={2}>
         {dataTrips?.map((item: Trip, index: Key | null | undefined) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
