@@ -1,18 +1,14 @@
 import { Autocomplete, Box, Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import React, { useEffect, useState } from 'react';
 import { toast } from "react-toastify";
-import { Association, TripInput, useCreateTripMutation, useFindAllAssociationsQuery } from "../../../graphql/types";
+import { Association, TripCreateWithoutTicketsInput, useCreateTripMutation, useFindAllAssociationsQuery } from "../../../graphql/types";
 
 type AssociationOptions = Omit<Association, 'trips' | '__typename'>
-
-type DataFormTrip = Omit<TripInput, 'ticket'>
-
-
 
 const FormCreateTrip = () => {
   //States
   const [optionsAssociations, setOptionsAssociations] = useState<AssociationOptions[]>([])
-
+  const [asociacionSelected, setAsociacionSelected] = useState<AssociationOptions>()
   //Querys
   const { data, loading, error } = useFindAllAssociationsQuery()
   const [createTripMutation, { data: dataCreate, loading: loadingCreate, error: errorCreate }] = useCreateTripMutation()
@@ -21,14 +17,22 @@ const FormCreateTrip = () => {
     if (data?.associations) {
       setOptionsAssociations(data.associations as AssociationOptions[])
     }
-
   }, [data])
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    const formData = getFormData(event)
-    console.log("formObject", formData)
 
+
+    const formData = getFormData(event)
+    const data: TripCreateWithoutTicketsInput = {
+      startTime: new Date(formData.startTime),
+      dscr: formData.dscr,
+      title: formData.title,
+      association: { connect: { id: asociacionSelected?.id } }
+    }
+    createTripMutation({ variables: { data } })
+    const form = document.getElementById("form-create-trip") as HTMLFormElement;
+    form.reset();
   }
   if (error) {
     toast.error("Error al cargar las asociaciones")
@@ -44,8 +48,7 @@ const FormCreateTrip = () => {
         width: '100%'
       }}
     >
-      <Box component="form" onSubmit={handleSubmit} >
-
+      <Box component="form" id="form-create-trip" onSubmit={handleSubmit}  >
         <Grid container spacing={2} direction={"column"}>
           <Typography variant="h4">
             Formulario crear viaje
@@ -55,8 +58,8 @@ const FormCreateTrip = () => {
               id="association-selec"
               style={{ width: '100%' }}
               options={optionsAssociations}
-              autoHighlight
               getOptionLabel={(option) => option.name}
+              onChange={(event, value,) => { setAsociacionSelected(value!) }}
               renderOption={(props, option) => (
                 <Box component="li" {...props} >{option.name}</Box>
               )}
@@ -64,10 +67,10 @@ const FormCreateTrip = () => {
                 <TextField
                   {...params}
                   required
+                  name="associationId"
+                  id="createTrip-associationId"
                   label="Seleccione una asociacion"
                   variant="outlined"
-                  name="associationId"
-                  fullWidth
                   inputProps={{
                     ...params.inputProps,
                     autoComplete: "disabled"
@@ -90,8 +93,8 @@ const FormCreateTrip = () => {
             <TextField
               fullWidth
               required
-              name="dsrc"
-              id="createTrip-dsrc"
+              name="dscr"
+              id="createTrip-dscr"
               label="Descripcion"
             />
           </Grid>

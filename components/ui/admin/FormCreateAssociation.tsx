@@ -61,8 +61,8 @@ export default function FormCreateAssociation(prop: FormCreateAssociationProps) 
         createAssociationMutation({
             variables: {
                 data: {
-                    name: dataForm.name,
                     dsrc: dataForm.dsrc,
+                    name: dataForm.name,
                     urlImage: dataForm.urlImage
                 }
             }

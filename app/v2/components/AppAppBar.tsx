@@ -20,7 +20,7 @@ const logoStyle = {
 
 interface AppAppBarProps {
   mode: PaletteMode;
-  toggleColorMode: () => void;
+  toggleColorMode?: () => void;
 }
 
 function AppAppBar({ mode, toggleColorMode }: AppAppBarProps) {

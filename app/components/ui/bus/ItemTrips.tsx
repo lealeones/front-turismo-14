@@ -14,18 +14,7 @@ export type ItemTripsProps = {
     item: Trip
 }
 
-export const obtenerNombreDia = (date: any) => {
-    // Array con los nombres de los días de la semana
-    const diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
 
-    // Obtener el número del día de la semana (0 para Domingo, 1 para Lunes, etc.)
-    const numeroDia = date.getDay();
-
-    // Obtener el nombre del día a partir del array
-    const nombreDia = diasSemana[numeroDia];
-
-    return nombreDia;
-}
 
 export default function ItemTrips(prop: ItemTripsProps) {
 
@@ -39,22 +28,9 @@ export default function ItemTrips(prop: ItemTripsProps) {
     const stringDate = new Date(startTime).toLocaleDateString();
 
 
- 
-
-    const obtenerHora = (date: any) => {
-        function agregarCeroDelante(numero: any) {
-            return numero < 10 ? `0${numero}` : numero;
-        }
-        // Obtener horas, minutos y segundos
-        const horas = date.getHours();
-        const minutos = date.getMinutes();
 
 
-        // Formatear la hora como una cadena
-        const horaFormateada = `${agregarCeroDelante(horas)}:${agregarCeroDelante(minutos)}`;
 
-        return horaFormateada;
-    }
 
     return (
         <Grid>
@@ -104,4 +80,32 @@ export default function ItemTrips(prop: ItemTripsProps) {
             <DetailTrip open={isOpen} handleClose={handleClose} item={item} />
         </Grid>
     );
+}
+
+export const obtenerHora = (date: any) => {
+    function agregarCeroDelante(numero: any) {
+        return numero < 10 ? `0${numero}` : numero;
+    }
+    // Obtener horas, minutos y segundos
+    const horas = date.getHours();
+    const minutos = date.getMinutes();
+
+
+    // Formatear la hora como una cadena
+    const horaFormateada = `${agregarCeroDelante(horas)}:${agregarCeroDelante(minutos)}`;
+
+    return horaFormateada;
+}
+
+export const obtenerNombreDia = (date: any) => {
+    // Array con los nombres de los días de la semana
+    const diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+
+    // Obtener el número del día de la semana (0 para Domingo, 1 para Lunes, etc.)
+    const numeroDia = date.getDay();
+
+    // Obtener el nombre del día a partir del array
+    const nombreDia = diasSemana[numeroDia];
+
+    return nombreDia;
 }
