@@ -1,18 +1,13 @@
 'use client'
-import CssBaseline from '@mui/material/CssBaseline';
+import { Box } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { useSearchParams } from 'next/navigation';
 import React, { Suspense, useEffect, useState } from 'react';
-import { Trip, useTripByIdQuery } from '../../../graphql/types';
-import getLPTheme from '../getLPTheme';
-import AppAppBar from '../components/AppAppBar';
-import Trips from '../components/Trips';
-import TripDetail from '../components/TripDetail';
-import { Box, useTheme } from '@mui/material';
-import Footer from '../components/Footer';
-import SkeletonCardsTrip from '../../components/trip/SkeletonCardsTrip';
-import PaymentComponent from '../../components/ui/bus/paymentComponent';
+import { useTripByIdQuery } from '../../../graphql/types';
 import ModalPayment from '../../components/payment/ModalPayment';
+import AppAppBar from '../components/AppAppBar';
+import Footer from '../components/Footer';
+import getLPTheme from '../getLPTheme';
 
 const DetailLazy = React.lazy(() => import('../components/TripDetail'));
 

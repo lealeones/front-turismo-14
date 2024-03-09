@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
 import { useSession } from 'next-auth/react';
 import { ListTrips } from './ListTrips';
-import PaymentComponent from './paymentComponent';
+import PaymentComponent from './payment/paymentComponent';
 import FAQAccordionCard from '@/components/FaqCard/FAQ';
 
 export const HomeBus = () => {

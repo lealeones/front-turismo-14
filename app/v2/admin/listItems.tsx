@@ -100,5 +100,40 @@ export const secondaryListItems = (
       </ListItemIcon>
       <ListItemText primary="Listar asociaciones" />
     </ListItemButton>
+    <Divider />
+    <ListSubheader component="div" inset>
+      Usuario admin
+    </ListSubheader>
+    <ListItemButton component={NextLinkComposed} to={{
+      pathname: '/v2/admin',
+      query: { action: 'createUserAssociation' }
+    }} >
+      <ListItemIcon>
+        <AssignmentIcon />
+      </ListItemIcon>
+      <ListItemText primary="Usuario asociacion" />
+    </ListItemButton>
+    <Divider />
+    <ListSubheader component="div" inset>
+      Usuario asociacion
+    </ListSubheader>
+    <ListItemButton component={NextLinkComposed} to={{
+      pathname: '/v2/admin',
+      query: { action: 'detailTrip' }
+    }} >
+      <ListItemIcon>
+        <AssignmentIcon />
+      </ListItemIcon>
+      <ListItemText primary="Detalle de viaje" />
+    </ListItemButton>
+    <ListItemButton component={NextLinkComposed} to={{
+      pathname: '/v2/admin',
+      query: { action: 'createCustomTicket' }
+    }} >
+      <ListItemIcon>
+        <AssignmentIcon />
+      </ListItemIcon>
+      <ListItemText primary="Ticket presencial" />
+    </ListItemButton>
   </React.Fragment>
 );

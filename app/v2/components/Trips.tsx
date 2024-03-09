@@ -73,8 +73,8 @@ export default function Trips() {
               variant="outlined"
               placeholder="Your email address"
               inputProps={{
-                autocomplete: 'off',
-                ariaLabel: 'Enter your email address',
+                autoComplete: 'off',
+               // ariaLabel: 'Enter your email address',
               }}
             />
             <Button variant="contained" color="primary">

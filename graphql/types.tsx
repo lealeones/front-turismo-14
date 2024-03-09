@@ -89,9 +89,9 @@ export type AssociationWhereUniqueInput = {
   urlImage?: InputMaybe<StringFilter>;
 };
 
-export type BoolFilter = {
+export type BoolNullableFilter = {
   equals?: InputMaybe<Scalars['Boolean']['input']>;
-  not?: InputMaybe<NestedBoolFilter>;
+  not?: InputMaybe<NestedBoolNullableFilter>;
 };
 
 export type DateTimeFilter = {
@@ -102,6 +102,17 @@ export type DateTimeFilter = {
   lt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   lte?: InputMaybe<Scalars['DateTimeISO']['input']>;
   not?: InputMaybe<NestedDateTimeFilter>;
+  notIn?: InputMaybe<Array<Scalars['DateTimeISO']['input']>>;
+};
+
+export type DateTimeNullableFilter = {
+  equals?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  gt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  gte?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  in?: InputMaybe<Array<Scalars['DateTimeISO']['input']>>;
+  lt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  lte?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  not?: InputMaybe<NestedDateTimeNullableFilter>;
   notIn?: InputMaybe<Array<Scalars['DateTimeISO']['input']>>;
 };
 
@@ -126,11 +137,23 @@ export type IntFilter = {
   notIn?: InputMaybe<Array<Scalars['Int']['input']>>;
 };
 
+export type IntNullableFilter = {
+  equals?: InputMaybe<Scalars['Int']['input']>;
+  gt?: InputMaybe<Scalars['Int']['input']>;
+  gte?: InputMaybe<Scalars['Int']['input']>;
+  in?: InputMaybe<Array<Scalars['Int']['input']>>;
+  lt?: InputMaybe<Scalars['Int']['input']>;
+  lte?: InputMaybe<Scalars['Int']['input']>;
+  not?: InputMaybe<NestedIntNullableFilter>;
+  notIn?: InputMaybe<Array<Scalars['Int']['input']>>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   createAssociation: Association;
   createTrip: Trip;
   getNewTicket: GetTicketResponse;
+  reserveTickets: GetTicketResponse;
 };
 
 
@@ -148,9 +171,15 @@ export type MutationGetNewTicketArgs = {
   input: Scalars['Float']['input'];
 };
 
-export type NestedBoolFilter = {
+
+export type MutationReserveTicketsArgs = {
+  idTrip: Scalars['Float']['input'];
+  reservedTickets: Scalars['Float']['input'];
+};
+
+export type NestedBoolNullableFilter = {
   equals?: InputMaybe<Scalars['Boolean']['input']>;
-  not?: InputMaybe<NestedBoolFilter>;
+  not?: InputMaybe<NestedBoolNullableFilter>;
 };
 
 export type NestedDateTimeFilter = {
@@ -161,6 +190,17 @@ export type NestedDateTimeFilter = {
   lt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   lte?: InputMaybe<Scalars['DateTimeISO']['input']>;
   not?: InputMaybe<NestedDateTimeFilter>;
+  notIn?: InputMaybe<Array<Scalars['DateTimeISO']['input']>>;
+};
+
+export type NestedDateTimeNullableFilter = {
+  equals?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  gt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  gte?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  in?: InputMaybe<Array<Scalars['DateTimeISO']['input']>>;
+  lt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  lte?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  not?: InputMaybe<NestedDateTimeNullableFilter>;
   notIn?: InputMaybe<Array<Scalars['DateTimeISO']['input']>>;
 };
 
@@ -175,6 +215,17 @@ export type NestedIntFilter = {
   notIn?: InputMaybe<Array<Scalars['Int']['input']>>;
 };
 
+export type NestedIntNullableFilter = {
+  equals?: InputMaybe<Scalars['Int']['input']>;
+  gt?: InputMaybe<Scalars['Int']['input']>;
+  gte?: InputMaybe<Scalars['Int']['input']>;
+  in?: InputMaybe<Array<Scalars['Int']['input']>>;
+  lt?: InputMaybe<Scalars['Int']['input']>;
+  lte?: InputMaybe<Scalars['Int']['input']>;
+  not?: InputMaybe<NestedIntNullableFilter>;
+  notIn?: InputMaybe<Array<Scalars['Int']['input']>>;
+};
+
 export type NestedStringFilter = {
   contains?: InputMaybe<Scalars['String']['input']>;
   endsWith?: InputMaybe<Scalars['String']['input']>;
@@ -185,6 +236,20 @@ export type NestedStringFilter = {
   lt?: InputMaybe<Scalars['String']['input']>;
   lte?: InputMaybe<Scalars['String']['input']>;
   not?: InputMaybe<NestedStringFilter>;
+  notIn?: InputMaybe<Array<Scalars['String']['input']>>;
+  startsWith?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type NestedStringNullableFilter = {
+  contains?: InputMaybe<Scalars['String']['input']>;
+  endsWith?: InputMaybe<Scalars['String']['input']>;
+  equals?: InputMaybe<Scalars['String']['input']>;
+  gt?: InputMaybe<Scalars['String']['input']>;
+  gte?: InputMaybe<Scalars['String']['input']>;
+  in?: InputMaybe<Array<Scalars['String']['input']>>;
+  lt?: InputMaybe<Scalars['String']['input']>;
+  lte?: InputMaybe<Scalars['String']['input']>;
+  not?: InputMaybe<NestedStringNullableFilter>;
   notIn?: InputMaybe<Array<Scalars['String']['input']>>;
   startsWith?: InputMaybe<Scalars['String']['input']>;
 };
@@ -232,16 +297,31 @@ export type StringFilter = {
   startsWith?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type StringNullableFilter = {
+  contains?: InputMaybe<Scalars['String']['input']>;
+  endsWith?: InputMaybe<Scalars['String']['input']>;
+  equals?: InputMaybe<Scalars['String']['input']>;
+  gt?: InputMaybe<Scalars['String']['input']>;
+  gte?: InputMaybe<Scalars['String']['input']>;
+  in?: InputMaybe<Array<Scalars['String']['input']>>;
+  lt?: InputMaybe<Scalars['String']['input']>;
+  lte?: InputMaybe<Scalars['String']['input']>;
+  mode?: InputMaybe<QueryMode>;
+  not?: InputMaybe<NestedStringNullableFilter>;
+  notIn?: InputMaybe<Array<Scalars['String']['input']>>;
+  startsWith?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type Ticket = {
   __typename?: 'Ticket';
-  createdAt: Scalars['DateTimeISO']['output'];
-  dni: Scalars['Int']['output'];
+  createdAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  dni?: Maybe<Scalars['Int']['output']>;
   id: Scalars['String']['output'];
-  isAdult: Scalars['Boolean']['output'];
-  name: Scalars['String']['output'];
-  status: Scalars['String']['output'];
+  isAdult?: Maybe<Scalars['Boolean']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  status?: Maybe<Scalars['String']['output']>;
   tripId: Scalars['Int']['output'];
-  updatedAt: Scalars['DateTimeISO']['output'];
+  updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
 };
 
 export type TicketListRelationFilter = {
@@ -254,15 +334,15 @@ export type TicketWhereInput = {
   AND?: InputMaybe<Array<TicketWhereInput>>;
   NOT?: InputMaybe<Array<TicketWhereInput>>;
   OR?: InputMaybe<Array<TicketWhereInput>>;
-  createdAt?: InputMaybe<DateTimeFilter>;
-  dni?: InputMaybe<IntFilter>;
+  createdAt?: InputMaybe<DateTimeNullableFilter>;
+  dni?: InputMaybe<IntNullableFilter>;
   id?: InputMaybe<StringFilter>;
-  isAdult?: InputMaybe<BoolFilter>;
-  name?: InputMaybe<StringFilter>;
-  status?: InputMaybe<StringFilter>;
+  isAdult?: InputMaybe<BoolNullableFilter>;
+  name?: InputMaybe<StringNullableFilter>;
+  status?: InputMaybe<StringNullableFilter>;
   trip?: InputMaybe<TripRelationFilter>;
   tripId?: InputMaybe<IntFilter>;
-  updatedAt?: InputMaybe<DateTimeFilter>;
+  updatedAt?: InputMaybe<DateTimeNullableFilter>;
 };
 
 export type Trip = {
@@ -359,6 +439,14 @@ export type GetCountTicketAvailableQueryVariables = Exact<{
 
 
 export type GetCountTicketAvailableQuery = { __typename?: 'Query', ticketAvailable: number };
+
+export type ReserveTicketMutationVariables = Exact<{
+  idTrip: Scalars['Float']['input'];
+  reservedTickets: Scalars['Float']['input'];
+}>;
+
+
+export type ReserveTicketMutation = { __typename?: 'Mutation', reserveTickets: { __typename?: 'GetTicketResponse', message: string, status: number, tickets?: Array<{ __typename?: 'Ticket', id: string }> | null } };
 
 
 export const CreateAssociationDocument = gql`
@@ -598,3 +686,41 @@ export type GetCountTicketAvailableQueryHookResult = ReturnType<typeof useGetCou
 export type GetCountTicketAvailableLazyQueryHookResult = ReturnType<typeof useGetCountTicketAvailableLazyQuery>;
 export type GetCountTicketAvailableSuspenseQueryHookResult = ReturnType<typeof useGetCountTicketAvailableSuspenseQuery>;
 export type GetCountTicketAvailableQueryResult = Apollo.QueryResult<GetCountTicketAvailableQuery, GetCountTicketAvailableQueryVariables>;
+export const ReserveTicketDocument = gql`
+    mutation reserveTicket($idTrip: Float!, $reservedTickets: Float!) {
+  reserveTickets(reservedTickets: $reservedTickets, idTrip: $idTrip) {
+    tickets {
+      id
+    }
+    message
+    status
+  }
+}
+    `;
+export type ReserveTicketMutationFn = Apollo.MutationFunction<ReserveTicketMutation, ReserveTicketMutationVariables>;
+
+/**
+ * __useReserveTicketMutation__
+ *
+ * To run a mutation, you first call `useReserveTicketMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useReserveTicketMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [reserveTicketMutation, { data, loading, error }] = useReserveTicketMutation({
+ *   variables: {
+ *      idTrip: // value for 'idTrip'
+ *      reservedTickets: // value for 'reservedTickets'
+ *   },
+ * });
+ */
+export function useReserveTicketMutation(baseOptions?: Apollo.MutationHookOptions<ReserveTicketMutation, ReserveTicketMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ReserveTicketMutation, ReserveTicketMutationVariables>(ReserveTicketDocument, options);
+      }
+export type ReserveTicketMutationHookResult = ReturnType<typeof useReserveTicketMutation>;
+export type ReserveTicketMutationResult = Apollo.MutationResult<ReserveTicketMutation>;
+export type ReserveTicketMutationOptions = Apollo.BaseMutationOptions<ReserveTicketMutation, ReserveTicketMutationVariables>;

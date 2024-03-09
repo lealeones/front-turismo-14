@@ -25,7 +25,24 @@ const theme = createTheme({
         }),
       },
     },
-  },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          transform: 'translate(14px, -12px) scale(0.75)',
+          background: 'red',
+
+        }
+      }
+    },
+
+    MuiFormLabel: {
+      styleOverrides: {
+        root: {
+   
+        }
+      }
+    },
+  }
 });
 
 export default theme;
